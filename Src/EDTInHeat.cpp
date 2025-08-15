@@ -467,7 +467,7 @@ void _Execute( int argc , char* argv[] )
 			{
 				unsigned int derivatives1[Dim];
 				for( int dd=0 ; dd<Dim ; dd++ ) derivatives1[dd] = dd==d ? 1 : 0;
-				F.weights[d+1][TensorDerivatives< Derivatives1 >::Index( derivatives1 )][ TensorDerivatives< Derivatives2 >::Index( derivatives2 )] = 1.;
+				F.weights[d+1][F.TDerivativeIndex( derivatives1 )][ F.CDerivativeIndex( derivatives2 )] = 1.;
 			}
 			tree.addFEMConstraints( F , leafValues , constraints , Depth.value );
 			if( Verbose.set ) std::cout << "#  Set EDT constraints: " << profiler << std::endl;

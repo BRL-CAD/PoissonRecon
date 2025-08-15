@@ -986,7 +986,7 @@ namespace PoissonRecon
 						{
 							unsigned int derivatives1[Dim];
 							for( int dd=0 ; dd<Dim ; dd++ ) derivatives1[dd] = dd==d ? 1 : 0;
-							F.weights[d][ TensorDerivatives< Derivatives1 >::Index( derivatives1 ) ][ TensorDerivatives< Derivatives2 >::Index( derivatives2 ) ] = 1;
+							F.weights[d][ F.TDerivativeIndex( derivatives1 ) ][ F.CDerivativeIndex( derivatives2 ) ] = 1;
 						}
 						implicit.tree.addFEMConstraints( F , *normalInfo , constraints , solveDepth );
 					}

@@ -347,7 +347,7 @@ void _Execute( void )
 
 			unsigned int derivatives1[] = { 1 , 0 } , derivatives2[] = { 0 , 0 };
 			typename FEMIntegrator::template Constraint< FEMSignature , FEMDerivative , CSignature , CDerivative , 1 > F;
-			F.weights[0][ TensorDerivatives< FEMDerivative >::Index( derivatives1 ) ][ TensorDerivatives< CDerivative >::Index( derivatives2 ) ] = 1;
+			F.weights[0][ F.TDerivativeIndex( derivatives1 ) ][ F.CDerivativeIndex( derivatives2 ) ] = 1;
 			tree.addFEMConstraints( F , partialX , constraints , maxDepth );
 		}
 		// Generate the partial-y constraints
@@ -361,7 +361,7 @@ void _Execute( void )
 
 			unsigned int derivatives1[] = { 0 , 1 } , derivatives2[] = { 0 , 0 };
 			typename FEMIntegrator::template Constraint< FEMSignature , FEMDerivative , CSignature , CDerivative , 1 > F;
-			F.weights[0][ TensorDerivatives< FEMDerivative >::Index( derivatives1 ) ][ TensorDerivatives< CDerivative >::Index( derivatives2 ) ] = 1;
+			F.weights[0][ F.TDerivativeIndex( derivatives1 ) ][ F.CDerivativeIndex( derivatives2 ) ] = 1;
 			tree.addFEMConstraints( F , partialY , constraints , maxDepth );
 		}
 		if( Verbose.set )
